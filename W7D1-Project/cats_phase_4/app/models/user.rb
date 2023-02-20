@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-
+  
   attr_reader :password
 
   validates :username,:session_token, presence: true, uniqueness: true
@@ -38,7 +38,7 @@ class User < ApplicationRecord
 
   def generate_unique_session_token
     token = SecureRandom::urlsafe_base64
-    while user.exists?(session_token: token)
+    while User.exists?(session_token: token)
       token = SecureRandom::urlsafe_base64
     end
     token

@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   resources :cats, except: :destroy do
     resources :cat_rental_requests, only: [:new]
   end
+
+  resource :session, only: [:new, :create, :destroy]
+
   resources :cat_rental_requests, only: [:new, :create] do
     member do
       post :approve
