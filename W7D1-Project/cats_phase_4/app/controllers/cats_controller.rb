@@ -1,7 +1,12 @@
 class CatsController < ApplicationController
+  
   def index
     @cats = Cat.all
-    render :index
+    # render :index
+    respond_to do |format|
+      format.html 
+      format.json { render json: @cats }
+    end
   end
 
   def show
